@@ -126,7 +126,7 @@ def _wrap_pull(tracer: trace.Tracer, action_name: str):
             except MQExceptionBase as e:
                 if e.type == MESSAGE_NOT_EXIST_CODE:
                     span.set_attribute(SpanAttributes.MESSAGING_BATCH_MESSAGE_COUNT, 0)
-                    span.set_status(trace.StatusCode.OK, MESSAGE_NOT_EXIST_CODE)
+                    span.set_status(trace.StatusCode.OK)
                 raise e
 
             span.set_attribute(
